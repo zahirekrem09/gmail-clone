@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <h2>Gmail clone</h2>
+      <Sidebar />
     </div>
   );
 }
