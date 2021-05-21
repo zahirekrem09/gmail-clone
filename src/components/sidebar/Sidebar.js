@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Button, IconButton } from "@material-ui/core";
 import {
   Add,
@@ -17,13 +18,13 @@ import "./style.css";
 import SidebarOption from "./SidebarOption";
 
 function Sidebar() {
+  const history = useHistory();
   const sidebarRoute = [
     {
       title: "Inbox",
       Icon: Inbox,
       notify: 20,
-      path: "/inbox",
-      selected: true,
+      path: "/",
     },
     {
       title: "Starred",
@@ -61,19 +62,20 @@ function Sidebar() {
       path: "/more",
     },
   ];
+  console.log(history.location.pathname);
   return (
     <div className="sidebar">
       <Button startIcon={<Add fontSize="large" />} className="sidebar__compose">
         Compose
       </Button>
-
       {sidebarRoute.map((route) => (
         <SidebarOption
           key={route.title}
           Icon={route.Icon}
           title={route.title}
           notify={route.notify}
-          selected={route.selected}
+          selected={history.location.pathname === route.path}
+          path={route.path}
         />
       ))}
       <div className="sidebar__footer">
